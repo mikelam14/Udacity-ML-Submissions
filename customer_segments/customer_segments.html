@@ -11804,7 +11804,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11862,7 +11862,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display a description of the dataset</span>
@@ -12005,7 +12005,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
@@ -12168,7 +12168,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
@@ -12204,7 +12204,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>R^2 score is: -0.482145791577
+<pre>R^2 score is: -0.525004119894
 </pre>
 </div>
 </div>
@@ -12232,7 +12232,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-I picked 'Fresh'. The reported prediction score is -0.482. The low score indicates that it is hard to derive the value of fresh products from the dataset, which makes it important feature to identify customers' spending habits.</p>
+I picked 'Fresh'. The reported prediction score is -0.525. The low score indicates that it is hard to derive the value of fresh products from the dataset, which makes it important feature to identify customers' spending habits.</p>
 
 </div>
 </div>
@@ -12248,7 +12248,7 @@ I picked 'Fresh'. The reported prediction score is -0.482. The low score indicat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Produce a scatter matrix for each pair of features in the data</span>
@@ -12281,13 +12281,13 @@ I picked 'Fresh'. The reported prediction score is -0.482. The low score indicat
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[29]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1b137ba8&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x120e3ef0&gt;</pre>
 </div>
 
 </div>
@@ -14313,7 +14313,7 @@ VkRE1EaSVkRE1EaSVkRE1Mb/B9+By6M6oN5CAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Scale the data using the natural logarithm</span>
@@ -18425,7 +18425,7 @@ QmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the log-transformed sample data</span>
@@ -18532,10 +18532,13 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># For each feature find the data points with extreme high or low values</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">log_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     
     <span class="c1"># TODO: Calculate Q1 (25th percentile of the data) for the given feature</span>
@@ -18551,8 +18554,18 @@ Once you have performed this implementation, the dataset will be stored in the v
     <span class="k">print</span> <span class="s2">&quot;Data points considered outliers for the feature &#39;{}&#39;:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
     <span class="n">display</span><span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="n">step</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="n">step</span><span class="p">))])</span>
     
+    <span class="n">index</span> <span class="o">=</span> <span class="n">log_data</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="n">step</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="n">step</span><span class="p">))]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>    
+    
 <span class="c1"># OPTIONAL: Select the indices for data points you wish to remove</span>
-<span class="n">outliers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">154</span><span class="p">]</span>
+<span class="n">C</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">C</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">C</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">outliers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Outliers index : {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">outliers</span><span class="p">))</span>
 
 <span class="c1"># Remove the outliers, if any were specified</span>
 <span class="n">good_data</span> <span class="o">=</span> <span class="n">log_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">log_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
@@ -19310,6 +19323,17 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 </div>
 
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Outliers index : [128L, 65L, 154L, 66L, 75L]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -19334,8 +19358,8 @@ Once you have performed this implementation, the dataset will be stored in the v
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>There are some data points considered outliers for more than one feature.</li>
-<li>If they are outliers in multiple features, chance is the data is truly problematic, maybe corrupted. </li>
+<li>There are some data points considered outliers for more than one feature. They are data points 65,66,75,128,164.</li>
+<li>If they are outliers in multiple features, chance is the data is truly problematic, maybe corrupted. If we keep the outliers, it could affect the clustering results. For example, an outlier in K-Means would seriously distort the cluster centers because the algorithm assigns data points to centers by minimizing Euclidean distance of points to centers. Outlier would draw the center towards itself and the results would be affected. </li>
 <li>I removed the data points that are outliers to multiple features. </li>
 </ul>
 
@@ -19367,7 +19391,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -19737,10 +19761,10 @@ QmCC
 <ul>
 <li>70.68% of variance is explained by the first two principal components.</li>
 <li>93.11% is explained by the first four principal components.</li>
-<li>The first dimension combines 'milk', 'grocery' and 'detergents_paper' together and the absolute weights are high. This matches our observation above that the three features correlate well so PCA decided to combine the three. Also 'fresh' and 'frozen' are being combined positively and the weights are still significant. This contributes 44% of variance.</li>
-<li>The second dimension I believe is to say how well each feature can help representing the dataset since all features are pointing the same direction. "Fresh" is the most significant feature here which matches the observation drawn from the regression model that it is an important feature. "Fresh", "Frozen" and "delicatessen" best represent this dimension. This contributes 26% of variance. </li>
-<li>The third dimension is mainly driven by "fresh" and "detergents_paper" in one direction, "delicatessen" as well as "frozen" in another direction. This explains 12% of variance.</li>
-<li>The fourth dimension is "fresh" and "delicatessen" in one direction against "Frozen" and "detergents_paper" in another direction. This explains 10% of variance. </li>
+<li>The first dimension combines 'milk', 'grocery' and 'detergents_paper' together and the absolute weights are high. Customer who buys a lot of milk, grocery and detergents and not buy fresh nor frozen will have a highly negative value for the component. Given how close the weights of fresh and frozen, this dimension could represent a restaurant. This contributes 44% of variance.</li>
+<li>For the second dimension, "Fresh", "Frozen" and "delicatessen" best represent this dimension. If a customer buy a lot of them then the component will have highly negative value. This might as well be a restaurant given it is all related to delivering food. This contributes 26% of variance. </li>
+<li>For third dimension, customers who buy a lot of fresh and detergent products, and very few frozen and delicatessen will have component of highly negative value. This could represent hotel since they store frozen food and buy delicatessen for people staying. This explains 12% of variance.</li>
+<li>For fourth dimension, customers who buy a lot of frozen product and detergents, and very few fresh food and delicatessen will have a highly positive value for the component. This could be some wholesale retailer selling frozen food. This explains 10% of variance. </li>
 </ul>
 
 </div>
@@ -19757,7 +19781,7 @@ QmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display sample log-data after having a PCA transformation applied</span>
@@ -19861,7 +19885,7 @@ QmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with only two dimensions</span>
@@ -19894,7 +19918,7 @@ QmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display sample log-data after applying PCA transformation in two dimensions</span>
@@ -19977,7 +20001,7 @@ QmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Create a biplot</span>
@@ -19994,13 +20018,13 @@ QmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[60]:</div>
+<div class="prompt output_prompt">Out[27]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x26fdc358&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1dc80c50&gt;</pre>
 </div>
 
 </div>
@@ -21140,7 +21164,7 @@ HRERERERkQ9jUkdEREREROTDmNQRERERERH5MCZ1REREREREPoxJHRERERERkQ9jUkdEREREROTD
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Apply your clustering algorithm of choice to the reduced data </span>
@@ -21238,7 +21262,7 @@ Mean Silhouette coefficient is [0.4219, 0.2298, 0.2894, 0.2552]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[99]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the results of the clustering from implementation</span>
@@ -21906,7 +21930,7 @@ BEIAAAAAWg6BEAAAAICWQyAEAAAAoOX8f3BAQjHjM9qfAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[107]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Inverse transform the centers</span>
@@ -22192,7 +22216,7 @@ Sample point 2 predicted to be in Cluster 1
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-We can keep the original clustering centers, and after the change is implemented, we can group the customer to the closest center. Then we can compare the change in the number of customers in each center, since the change will affect differnet groups of customers differently. If some clusters have statistically and practically significantly decreased number of customers than before, then the change is negatively received, and vice versa.</p>
+Based on our clustering results, we can perform A/B tests on each customer segment. Sample x% of customers in each segment and change the delivery service to them and keep everything else the same. Then we can measure if their change in purchase amount is statistically and practically significant. We can also find out which group of customers would be affected the most by comparing the purchase amount change in each segment.</p>
 
 </div>
 </div>
@@ -22904,7 +22928,7 @@ REREqo4CIRERERERqToKhEREREREpOooEBIRERERkarz/wFXe85rx/irygAAAABJRU5ErkJggg==
 <p><strong>Answer:</strong></p>
 <ul>
 <li>GMM gives the correct clustering result after picking the optimal number of clusters. </li>
-<li>Segment 0 is 'retailer' and segment 1 is 'hotels/restaurants/cafes'.</li>
+<li>The segments are not completely separable as there are still some dots overlapping and close to other cluster. It is hard to say pure 'retail' or 'hotels/restaurants/cafes'. </li>
 <li>I would think they are very consistent. </li>
 </ul>
 
