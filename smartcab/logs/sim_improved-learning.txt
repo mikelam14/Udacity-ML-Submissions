@@ -1,0 +1,112 @@
+/-----------------------------------------
+| State-action rewards from Q-Learning
+\-----------------------------------------
+
+('left', 'red', 'Care', 'NotCare')
+ -- forward : 1.12
+ -- right : 13.60
+ -- None : 18.11
+ -- left : -9.16
+
+('left', 'red', 'NotCare', 'Care')
+ -- forward : -28.00
+ -- right : -12.32
+ -- None : 8.95
+ -- left : -25.88
+
+('forward', 'green', 'Care', 'NotCare')
+ -- forward : 17.50
+ -- right : 9.93
+ -- None : 5.89
+ -- left : -15.74
+
+('right', 'red', 'Care', 'Care')
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -19.58
+
+('forward', 'red', 'NotCare', 'Care')
+ -- forward : -32.11
+ -- right : -13.91
+ -- None : 5.94
+ -- left : -16.97
+
+('left', 'red', 'NotCare', 'NotCare')
+ -- forward : 51.70
+ -- right : 66.37
+ -- None : 77.74
+ -- left : 56.24
+
+('right', 'red', 'NotCare', 'Care')
+ -- forward : -20.01
+ -- right : -9.73
+ -- None : 1.60
+ -- left : -19.86
+
+('left', 'green', 'NotCare', 'NotCare')
+ -- forward : 49.27
+ -- right : 56.42
+ -- None : 39.30
+ -- left : 66.41
+
+('right', 'red', 'Care', 'NotCare')
+ -- forward : -4.20
+ -- right : 3.35
+ -- None : 7.49
+ -- left : -17.41
+
+('left', 'red', 'Care', 'Care')
+ -- forward : -18.95
+ -- right : -9.70
+ -- None : 1.72
+ -- left : 0.00
+
+('forward', 'red', 'Care', 'NotCare')
+ -- forward : -12.88
+ -- right : 10.53
+ -- None : 0.63
+ -- left : -26.87
+
+('left', 'green', 'Care', 'NotCare')
+ -- forward : 1.42
+ -- right : 7.46
+ -- None : -0.53
+ -- left : -13.19
+
+('right', 'red', 'NotCare', 'NotCare')
+ -- forward : 22.20
+ -- right : 39.45
+ -- None : 25.18
+ -- left : 18.97
+
+('right', 'green', 'NotCare', 'NotCare')
+ -- forward : 35.45
+ -- right : 41.98
+ -- None : 13.92
+ -- left : 24.98
+
+('forward', 'red', 'Care', 'Care')
+ -- forward : 0.00
+ -- right : -9.24
+ -- None : 1.33
+ -- left : -18.86
+
+('forward', 'red', 'NotCare', 'NotCare')
+ -- forward : 34.44
+ -- right : 63.44
+ -- None : 71.95
+ -- left : 21.13
+
+('forward', 'green', 'NotCare', 'NotCare')
+ -- forward : 77.68
+ -- right : 67.20
+ -- None : 59.66
+ -- left : 53.19
+
+('right', 'green', 'Care', 'NotCare')
+ -- forward : 4.30
+ -- right : 14.75
+ -- None : 3.46
+ -- left : -9.29
+
