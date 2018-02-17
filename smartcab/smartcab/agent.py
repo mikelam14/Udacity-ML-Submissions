@@ -42,14 +42,20 @@ class LearningAgent(Agent):
         if testing: 
             self.alpha, self.epsilon, self.ep = 0.0, 0.0, 0.0 
         else: 
+            # 0. default
+            #self.epsilon -= 0.05
             # 1. basic agent, linear decrease in epsilon
             #if trial > 1: self.epsilon -= 0.05
             # 2. exponential
             #if trial > 1: 
             #    self.epsilon = math.exp(-(trial-1)*0.1)
             # 3. power (1/t^2)
-            if trial > 1:
-                self.epsilon = 1.0/(trial**0.3)
+            #if trial > 1:
+            #    self.epsilon = 1.0/(trial**0.3)
+            # 4. quadratic - graph decay slower at first
+            if trial > 1: 
+                a = -1.0/(300**2)
+                self.epsilon = 1 + a * (trial**2)
         return None
 
     def build_state(self):
@@ -72,6 +78,7 @@ class LearningAgent(Agent):
         # With the hand-engineered features, this learning process gets entirely negated.
         
         # Set 'state' as a tuple of relevant data for the agent 
+        '''
         if inputs['oncoming'] == 'right' or inputs['oncoming'] == 'forward':
             on = 'Care'
         else: 
@@ -90,6 +97,8 @@ class LearningAgent(Agent):
         if inputs['light'] == 'green': left = 'NotCare'
         
         state = (waypoint, inputs['light'],on,left)
+        '''
+        state = (waypoint,inputs['light'],inputs['oncoming'],inputs['left'])
         return state
 
 
@@ -102,17 +111,22 @@ class LearningAgent(Agent):
         ###########
         # Calculate the maximum Q-value of all actions for a given state
         maxQ = None
-        best = None
+        best = []
         for act in self.valid_actions:
             if maxQ is None: 
                 maxQ = self.Q[state][act]
-                best = act
+                best.append(act)
             else:
                 if self.Q[state][act] > maxQ:
                     maxQ = self.Q[state][act]
-                    best = act
-        
-
+                    best = []
+                    best.append(act)
+                elif self.Q[state][act] == maxQ:
+                    best.append(act)
+        if len(best) > 1:
+            best = random.choice(best)
+        elif len(best) == 1:
+            best = best[0]      
         return(maxQ,best)
 
 
@@ -125,13 +139,13 @@ class LearningAgent(Agent):
         # When learning, check if the 'state' is not in the Q-table
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
-
-        if state in self.Q.keys():
-            pass
-        else:
-            self.Q[state] = {}
-            for act in self.valid_actions:
-                self.Q[state][act] = 0.0
+        if self.learning:
+            if state in self.Q.keys():
+                pass
+            else:
+                self.Q[state] = {}
+                for act in self.valid_actions:
+                    self.Q[state][act] = 0.0
         return
 
 
@@ -173,8 +187,10 @@ class LearningAgent(Agent):
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
         # Q = Q(1-alpha) + alpha (r+maxQ-value), use function get_maxQ
-        self.Q[state][action] = self.Q[state][action]*(1-self.alpha) + \
-                                self.alpha*(reward+self.get_maxQ(state)[0])
+        if self.learning:
+            self.Q[state][action] = self.Q[state][action]*(1-self.alpha) + \
+                                                            self.alpha*reward
+                                #self.alpha*(reward+self.get_maxQ(state)[0])
         return
 
 
@@ -233,13 +249,19 @@ def run():
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
     
+    # 0. default
+    #sim.run(n_test=10)
     # 1. basic linear
     #sim.run(n_test=50,tolerance=1-49*(0.05))
     # 2. exponential
     #sim.run(n_test=50,tolerance=math.exp(-48*0.1))
     # 3. Power (1/t^2)
-    sim.run(n_test=50,tolerance=1.0/(49**0.3))
+    #sim.run(n_test=50,tolerance=1.0/(49**0.3))
+    # 4. cubic - graph decay slower at first
+    a = -1.0/(300**2)
+    sim.run(n_test=50,tolerance=(1+a*(299**2)))
     print(len(agent.Q.keys()))
+    return(agent.Q)
 
 if __name__ == '__main__':
     run()

@@ -12,6 +12,8 @@ import agent as a
 os.chdir('C:\\Users\\pc\\Google Drive (lam.yanpui14@gmail.com)\\Mikee\\Self Learn\\Udacity\\ML nanodegree\\ML-Submissions\\smartcab')
 import visuals as vs
 
+#f = 'sim_no-learning.csv'
+#f = 'sim_default-learning.csv'
 f = 'sim_improved-learning.csv'
 
 def getTestRatings(csv):
@@ -77,7 +79,7 @@ safe, reliability, safeRate, reliRate, reward, deadline, states, zCount = [],[],
 n = 1
 start = time.time()
 for i in range (n):
-    a.run()
+    Q = a.run()
     # 1. read file and get safety and reliability ratings
     s, r, sr, rr, rew, d, st, z = getTestRatings(f)
     safe.append(s)
