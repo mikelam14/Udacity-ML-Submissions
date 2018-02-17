@@ -78,26 +78,7 @@ class LearningAgent(Agent):
         # With the hand-engineered features, this learning process gets entirely negated.
         
         # Set 'state' as a tuple of relevant data for the agent 
-        '''
-        if inputs['oncoming'] == 'right' or inputs['oncoming'] == 'forward':
-            on = 'Care'
-        else: 
-            on = 'NotCare'
-        
-        if inputs['left'] == 'forward': 
-            left = 'Care'
-        else: 
-            left = 'NotCare'
-        
-        # state is waypoint, light, oncoming, left
-        #state = (waypoint,inputs['light'],inputs['oncoming'],inputs['left']) # None # (original value)
-        state = (waypoint, inputs['light'],on,left)
-        
-        # new 2018-02-15
-        if inputs['light'] == 'green': left = 'NotCare'
-        
-        state = (waypoint, inputs['light'],on,left)
-        '''
+
         state = (waypoint,inputs['light'],inputs['oncoming'],inputs['left'])
         return state
 

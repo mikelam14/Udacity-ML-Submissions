@@ -11885,6 +11885,7 @@ div#notebook {
 <ul>
 <li>The Smartcab did not move at all during the simulation</li>
 <li>When actions are invalid (causing violation and accidents), the agent will receive negative reward. The worse the violation the more negative the reward. When actions are valid, if the action matches the waypoint, the agent will get more positive rewards. If the actions are valid but incorrect (not matching the waypoint), the agent will still get rewards but smaller.  </li>
+<li>When lights are red, turning left and going straight is going to give negative rewards no matter what. Turning right is valid move when there is no traffic going forward from left. When lights are green, going straight and right is going to be valid. Going left is valid only when there is no oncoming traffic turning right.  </li>
 </ul>
 
 </div>
@@ -13110,8 +13111,15 @@ The agent is set to not learn during the trials. Throughout the trials the agent
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>I think inputs are important for safety, and waypoint is important for efficiency. Waypoint allows us to choose the correct direction to go which would lead the agent to the correct destination, so if the waypoints can be executed correctly and in short time, the efficiency would be high.</p>
+<p>I think inputs are important for safety, and waypoint is important for efficiency.</p>
+<ul>
+<li>Waypoint allows us to choose the correct direction to go which would lead the agent to the correct destination, so if the waypoints can be executed correctly and in short time, the efficiency would be high. </li>
+<li>Light input is important, because the actions will be totally different depending on the light. For example, we can go straight only when light is red.</li>
+<li>Oncoming input is important, because when we can turn left only when oncoming traffic is not going forward nor turning right (of course under green light). </li>
+<li>Left traffic is important, because under red light, we can turn right only when left traffic is not going forward. </li>
+</ul>
 <p>Deadline is important, but it introduces too many states to explore. Also teaching the agent about deadline might cause it to make decisions leading to danger when time is about to run out. The priority should be safety first then reliability.</p>
+<p>Right traffic is not important. We do not need to know what actions they take if they follow the USA right of way rules.</p>
 
 </div>
 </div>
